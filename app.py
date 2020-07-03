@@ -1,15 +1,16 @@
 from flask import Flask,render_template,redirect,request
 import numpy as np
-
-
+import pickle
+import caption_it
+from keras.models import Model, load_model
 
 app = Flask(__name__)
-
+model = load_model("model_9.h5")
 
 @app.route('/')
-def hello():
-	return render_template("index.html")
-import caption_it
+def home():
+    return render_template('index.html')
+
 
 								
 @app.route('/',methods= ['POST'])
